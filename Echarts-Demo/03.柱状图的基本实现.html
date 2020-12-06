@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="lib/echarts.min.js"></script>
+</head>
+<body>
+    <div style="width: 600px;height: 400px;"></div>
+    <script>
+        var mCharts = echarts.init(document.querySelector('div'))
+        var xDataArr = ['你发货', '发的回复', '华盛顿', '分布式对', '年份', '卡死', '复合索引']
+        var yDataArr = [30, 56, 78, 60, 90, 87, 70]
+        var option = {
+            xAxis: {
+                type: 'value'
+            },
+            yAxis: {
+                type: 'category',
+                data: xDataArr
+            },
+            series: [
+                {
+                    type: 'bar',
+                    data: yDataArr,
+                    markPoint: {
+                        data: [
+                            {
+                                type: 'max', name: '最大值'
+                            }, 
+                            {
+                                type: 'min', name: '最小值'
+                            }
+                        ]
+                    },
+                    markLine: {
+                        data: [
+                            {
+                                type: 'average', name: '平均值'
+                            }
+                        ]
+                    },
+                    barWidth: '70%',
+                    label: {
+                        show: true,
+                        position: 'inside',
+                        rotate: 45
+                    }
+                }
+            ]
+        }
+
+        mCharts.setOption(option)
+    </script>
+</body>
+</html>
