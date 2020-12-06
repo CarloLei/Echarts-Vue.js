@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="lib/echarts.min.js"></script>
 </head>
+
 <body>
     <div style="width: 600px;height: 400px;"></div>
     <script>
@@ -13,6 +15,25 @@
         var xDataArr = ['你发货', '发的回复', '华盛顿', '分布式对', '年份', '卡死', '复合索引']
         var yDataArr = [30, 56, 78, 60, 90, 87, 70]
         var option = {
+            // 图表的标题
+            title: {
+                text: '语文成绩',
+                textStyle: {
+                    color: '#1890ff'
+                }
+            },
+            // 提示工具
+            tooltip: {
+                // 提示工具的触发时机
+                // trigger: 'item',
+                trigger: 'axis',
+                triggerOn: 'click',
+                // formatter: '{b} 的分数是 {c}',
+                // 提示工具的格式化内容
+                formatter: function(arg) {
+                    return arg[0].name + '的分数是' + arg[0].data
+                }
+            },
             xAxis: {
                 type: 'value'
             },
@@ -22,13 +43,14 @@
             },
             series: [
                 {
+                    name: '语文',
                     type: 'bar',
                     data: yDataArr,
                     markPoint: {
                         data: [
                             {
                                 type: 'max', name: '最大值'
-                            }, 
+                            },
                             {
                                 type: 'min', name: '最小值'
                             }
@@ -54,4 +76,5 @@
         mCharts.setOption(option)
     </script>
 </body>
+
 </html>
