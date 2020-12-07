@@ -13,13 +13,14 @@
     <script>
         var mCharts = echarts.init(document.querySelector('div'))
         var xDataArr = ['你发货', '发的回复', '华盛顿', '分布式对', '年份', '卡死', '复合索引']
-        var yDataArr = [30, 56, 78, 60, 90, 87, 70]
+        var yDataArr1 = [30, 56, 78, 60, 90, 87, 70]
+        var yDataArr2 = [30, 56, 78, 60, 90, 87, 70]
         var option = {
             // 图表的标题
             title: {
-                text: '语文成绩',
+                text: '成绩',
                 textStyle: {
-                    color: '#1890ff'
+                    color: '#1890ff' 
                 }
             },
             // 提示工具
@@ -46,6 +47,11 @@
                     } // 动态切换图表的类型
                 }
             },
+            // 图例：对series进行筛选
+            legend: {
+                // data的值需要与series的name对应
+                data: ['语文', '数学']
+            },
             xAxis: {
                 type: 'value'
             },
@@ -57,30 +63,12 @@
                 {
                     name: '语文',
                     type: 'bar',
-                    data: yDataArr,
-                    markPoint: {
-                        data: [
-                            {
-                                type: 'max', name: '最大值'
-                            },
-                            {
-                                type: 'min', name: '最小值'
-                            }
-                        ]
-                    },
-                    markLine: {
-                        data: [
-                            {
-                                type: 'average', name: '平均值'
-                            }
-                        ]
-                    },
-                    barWidth: '70%',
-                    label: {
-                        show: true,
-                        position: 'inside',
-                        rotate: 45
-                    }
+                    data: yDataArr1
+                },
+                {
+                    name: '数学',
+                    type: 'bar',
+                    data: yDataArr2
                 }
             ]
         }
